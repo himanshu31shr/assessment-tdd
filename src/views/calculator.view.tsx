@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CalculatorService } from "../services/calculator.service";
 
-export const StringCalculator = () => {
+export const StringCalculator: React.FC = () => {
   const [input, setInput] = useState<string>("");
   const [result, setResult] = useState<string>();
 
