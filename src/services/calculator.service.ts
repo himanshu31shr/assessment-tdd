@@ -1,7 +1,7 @@
 export class CalculatorService {
   private input: string;
 
-  private result?: number;
+  private result?: bigint;
 
   constructor(input = "") {
     this.input = input;
@@ -9,12 +9,15 @@ export class CalculatorService {
 
   calculate() {
     if (!this.input) {
-      this.result = 0;
+      this.result = 0n;
     } else {
       this.result = this.input
         .split(/, ?/i)
         .filter((num) => !isNaN(+num))
-        .reduce((acc: number, next: string) => acc + +next, 0);
+        .reduce(
+          (prev: number | bigint, next: string) => BigInt(prev) + BigInt(next),
+          0n
+        );
     }
 
     return this.result;

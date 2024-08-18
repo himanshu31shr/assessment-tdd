@@ -38,7 +38,11 @@ describe("Calculator view", () => {
     expect(button).toBeInTheDocument();
     expect(textBox).toBeInTheDocument();
 
-    await userEvent.type(textBox, "");
+    await fireEvent.change(textBox, {
+      target: {
+        value: "",
+      },
+    });
 
     await fireEvent.click(button);
     expect(element.textContent).toBe("0");

@@ -3,7 +3,7 @@ import { CalculatorService } from "../services/calculator.service";
 
 export const StringCalculator = () => {
   const [input, setInput] = useState<string>("");
-  const [result, setResult] = useState<number>();
+  const [result, setResult] = useState<string>();
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(event.target.value);
@@ -13,7 +13,7 @@ export const StringCalculator = () => {
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     const service = new CalculatorService(input);
-    setResult(service.calculate());
+    setResult(service.calculate().toString());
   };
 
   return (
