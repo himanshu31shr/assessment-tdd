@@ -41,10 +41,16 @@ export class CalculatorService {
     if (!this.input) {
       this.result = 0n;
     } else {
-      this.result = this.input
-        .split(this._delimiters)
-        .filter(this._filter)
-        .reduce(this._sum, 0n);
+      let parsed = this.input.split(this._delimiters).filter(this._filter);
+      const negativeNumbers = parsed.filter((num: string) => +num < 0);
+
+      if (negativeNumbers.length) {
+        throw new Error(
+          `Input string has (${negativeNumbers.join(", ")}) negative numbers!`
+        );
+      }
+
+      this.result = parsed.reduce(this._sum, 0n);
     }
 
     return this.result;

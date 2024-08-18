@@ -70,4 +70,34 @@ describe("Calculator view", () => {
     await fireEvent.click(button);
     expect(element.textContent).toBe((3 + 4 + 5 + 5 + 7 + 10 + 10).toString());
   });
+
+  test("results when data contains negative numbers", async () => {
+    render(<StringCalculator />);
+
+    const element = screen.getByTestId(/results-container/i);
+    const button = screen.getByRole("button");
+    const textBox = screen.getByRole("textbox");
+
+    expect(element).toBeInTheDocument();
+    expect(button).toBeInTheDocument();
+    expect(textBox).toBeInTheDocument();
+
+    await fireEvent.change(textBox, {
+      target: {
+        value: `//|
+3|4|5,5,7 \n -10
+10`,
+      },
+    });
+
+    await fireEvent.click(button);
+
+    const messageContainer = screen.getByTestId("message-container");
+    expect(messageContainer).toBeInTheDocument();
+
+    expect(element.textContent).toBe("Snap, Something broke!");
+    expect(messageContainer.textContent).toBe(
+      "Input string has ( -10) negative numbers!"
+    );
+  });
 });

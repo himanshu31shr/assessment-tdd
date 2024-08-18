@@ -42,6 +42,26 @@ const inputs: InputData = [
   [`//;\n1;2\n100`, 1 + 2 + 100],
 ];
 
+const invalidInputs: InputData = [
+  ["1,,\n5,5,   \n 30,   -2,,,,ddff,10", "-2"],
+  [`1,2,-3,5`, "-3"],
+  [
+    `1\n-5\n5\n30,   2,,,,ddff,10
+10
+
+-10
+   \n2\n3
+20`,
+    "-5, -10",
+  ],
+  [
+    `//|
+3|4|-5,-5,-7 \n -10
+10`,
+    "-5, -5, -7, -10",
+  ],
+];
+
 describe("Calculator service", () => {
   test("should initialize", () => {
     const input = "";
@@ -53,14 +73,6 @@ describe("Calculator service", () => {
     const service = new CalculatorService(input);
     expect(service.calculate()).toEqual(0n);
   });
-
-  for (let arr of inputs) {
-    test("should return sum with comma seperated numbers " + arr[0], () => {
-      const service = new CalculatorService(arr[0] as string);
-      service.findAdditionalDelimiter();
-      expect(service.calculate()).toEqual(BigInt(arr[1]));
-    });
-  }
 
   test("should throw exception with invalid delimiter", () => {
     try {
@@ -75,6 +87,35 @@ describe("Calculator service", () => {
           "Custom delimiter definition discard: Delimiters cannot be numbers!"
         );
       }
+    }
+  });
+
+  describe("valid cases of calculation", () => {
+    for (let arr of inputs) {
+      test("should return sum with comma seperated numbers " + arr[0], () => {
+        const service = new CalculatorService(arr[0] as string);
+        service.findAdditionalDelimiter();
+        expect(service.calculate()).toEqual(BigInt(arr[1]));
+      });
+    }
+  });
+
+  describe("invalid cases of calculation", () => {
+    for (let arr of inputs) {
+      test("should throw exception with negative numbers " + arr[0], () => {
+        try {
+          const service = new CalculatorService();
+          service.findAdditionalDelimiter();
+          service.calculate();
+        } catch (err) {
+          expect(err).toBeInstanceOf(Error);
+          if (err instanceof Error) {
+            expect(err.message).toBe(
+              `Input string has (${arr[1]}) negative numbers!`
+            );
+          }
+        }
+      });
     }
   });
 });

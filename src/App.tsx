@@ -1,11 +1,11 @@
 import "./App.css";
-import { StringCalculator } from "./views/calculator.view";
+import { StringCalculator } from "./views/calculator/calculator.view";
 
 function App() {
   return (
     <div className="App">
       <nav className="navbar bg-primary" data-testid="navbar-loaded">
-        <div className="container-fluid">
+        <div className="container">
           <a className="navbar-brand text-white text-bold" href="/">
             String Calculator
           </a>

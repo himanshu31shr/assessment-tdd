@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { CalculatorService } from "../services/calculator.service";
+
+import { Info } from "./info.component";
+import { CalculatorService } from "../../services/calculator.service";
+import { ResultComponent } from "./result.component";
 
 export const StringCalculator: React.FC = () => {
   const [input, setInput] = useState<string>("");
@@ -21,15 +24,19 @@ export const StringCalculator: React.FC = () => {
     } catch (err) {
       if (err instanceof Error) {
         setInfo(err.message);
+        setResult("Snap, Something broke!");
       }
     }
   };
 
   return (
     <div className="row justify-content-center">
+      <div className="col-12">
+        <Info />
+      </div>
       <div className="col-4 ">
         <label htmlFor="input-text" className="form-label">
-          Enter comma seperated numbers
+          Enter sequence to be parsed
         </label>
         <textarea
           className="form-control border-1 rounded-1"
@@ -38,21 +45,22 @@ export const StringCalculator: React.FC = () => {
           onChange={handleChange}
           name="inputText"
         ></textarea>
-        {!!info && <p className="bg-warning mt-3 p-2 rounded-1">{info}</p>}
-        <div className="d-grid">
+        {!!info && (
+          <p
+            className="bg-danger text-light m-0 mt-3 p-2 rounded-1"
+            data-testid="message-container"
+          >
+            {info}
+          </p>
+        )}
+        <div className="d-grid mt-3">
           <button className="btn btn-primary" onClick={triggerChange}>
             Calculate
           </button>
         </div>
       </div>
       <div className="col-4 text-center">
-        <h3 className="text-secondary">Results</h3>
-        <div
-          className="results-container fs-1 text-break bg-light p-2 mt-4 rounded-1"
-          data-testid="results-container"
-        >
-          {result}
-        </div>
+        <ResultComponent result={result} />
       </div>
     </div>
   );
