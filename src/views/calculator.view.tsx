@@ -4,6 +4,7 @@ import { CalculatorService } from "../services/calculator.service";
 export const StringCalculator: React.FC = () => {
   const [input, setInput] = useState<string>("");
   const [result, setResult] = useState<string>();
+  const [info, setInfo] = useState<string>("");
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(event.target.value);
@@ -12,8 +13,16 @@ export const StringCalculator: React.FC = () => {
   const triggerChange = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    const service = new CalculatorService(input);
-    setResult(service.calculate().toString());
+    setInfo("");
+    try {
+      const service = new CalculatorService(input);
+      service.findAdditionalDelimiter();
+      setResult(service.calculate().toString());
+    } catch (err) {
+      if (err instanceof Error) {
+        setInfo(err.message);
+      }
+    }
   };
 
   return (
@@ -23,14 +32,15 @@ export const StringCalculator: React.FC = () => {
           Enter comma seperated numbers
         </label>
         <textarea
-          className="form-control border-1 rounded-0"
+          className="form-control border-1 rounded-1"
           id="input-text"
           rows={6}
           onChange={handleChange}
           name="inputText"
         ></textarea>
+        {!!info && <p className="bg-warning mt-3 p-2 rounded-1">{info}</p>}
         <div className="d-grid">
-          <button className="btn btn-primary btn- mt-4" onClick={triggerChange}>
+          <button className="btn btn-primary" onClick={triggerChange}>
             Calculate
           </button>
         </div>
@@ -38,7 +48,7 @@ export const StringCalculator: React.FC = () => {
       <div className="col-4 text-center">
         <h3 className="text-secondary">Results</h3>
         <div
-          className="results-container fs-1 text-break bg-light p-2 mt-4"
+          className="results-container fs-1 text-break bg-light p-2 mt-4 rounded-1"
           data-testid="results-container"
         >
           {result}

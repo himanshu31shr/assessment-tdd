@@ -47,4 +47,27 @@ describe("Calculator view", () => {
     await fireEvent.click(button);
     expect(element.textContent).toBe("0");
   });
+
+  test("results when specified data is provided", async () => {
+    render(<StringCalculator />);
+
+    const element = screen.getByTestId(/results-container/i);
+    const button = screen.getByRole("button");
+    const textBox = screen.getByRole("textbox");
+
+    expect(element).toBeInTheDocument();
+    expect(button).toBeInTheDocument();
+    expect(textBox).toBeInTheDocument();
+
+    await fireEvent.change(textBox, {
+      target: {
+        value: `//|
+3|4|5,5,7 \n 10
+10`,
+      },
+    });
+
+    await fireEvent.click(button);
+    expect(element.textContent).toBe((3 + 4 + 5 + 5 + 7 + 10 + 10).toString());
+  });
 });
