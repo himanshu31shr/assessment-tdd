@@ -1,46 +1,80 @@
-# Getting Started with Create React App
+# [Calculator App](https://himanshu31shr.github.io/assessment-tdd/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project is a web-based calculator app built with React and TypeScript. The app allows users to input sequences of numbers, separated by specific delimiters, and calculates their sum. It includes a custom `CalculatorService` class that handles the parsing and calculation logic, while the React frontend provides an intuitive interface for user interaction.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **React Frontend**: A responsive user interface built with React, featuring Bootstrap for styling.
+- **Calculator Service**: A backend service class (`CalculatorService`) that processes input strings and computes the sum of numbers.
+- **Custom Delimiters**: Supports user-defined delimiters in addition to default ones like commas and newlines.
+- **Error Handling**: Detects negative numbers in the input and displays an error message.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To set up the project locally, follow these steps:
 
-### `npm test`
+1. **Clone the repository**:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   git clone https://github.com/himanshu31shr/calculator-app.git
+   ```
 
-### `npm run build`
+2. **Navigate to the project directory**:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   cd calculator-app
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Install dependencies**:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   npm install
+   ```
 
-### `npm run eject`
+4. **Start the development server**:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   ```bash
+   npm start
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   The app should now be running at `http://localhost:3000`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Usage
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### User Interface
 
-## Learn More
+1. **Enter Input**: Users can input a sequence of numbers in the provided text area. The input can include commas, newlines, and custom delimiters.
+2. **Calculate Sum**: After entering the sequence, users can press the "Calculate" button to see the sum of the numbers displayed in the results section.
+3. **Custom Delimiters**: To include a custom delimiter, start the sequence with `//` followed by the delimiter character.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Running Tests
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The project includes unit tests to ensure the functionality of the `CalculatorService` and React components.
+
+To run the tests:
+
+```bash
+npm run test
+```
+
+## Deployment
+
+To deploy the app:
+
+1. **Build the app**:
+
+   ```bash
+   npm run build
+   ```
+
+2. **Deploy**: Deploy the contents of the `build` directory to your preferred hosting service.
+
+## Contact
+
+For questions or feedback, please contact [himanshu31shr@gmail.com](mailto:himanshu31shr@gmail.com).
+
+---
+
+This `README.md` provides a comprehensive guide to setting up, using, and understanding the entire project. It integrates the `CalculatorService` with the React frontend and offers clear instructions for both developers and end users.

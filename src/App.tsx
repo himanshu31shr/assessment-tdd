@@ -1,4 +1,3 @@
-import "./App.css";
 import { StringCalculator } from "./views/calculator/calculator.view";
 
 function App() {
