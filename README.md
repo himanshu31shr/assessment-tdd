@@ -1,80 +1,44 @@
-# [Calculator App](https://himanshu31shr.github.io/assessment-tdd/)
+# 🧪 Assessment TDD
 
-## Overview
+<div align="center">
 
-This project is a web-based calculator app built with React and TypeScript. The app allows users to input sequences of numbers, separated by specific delimiters, and calculates their sum. It includes a custom `CalculatorService` class that handles the parsing and calculation logic, while the React frontend provides an intuitive interface for user interaction.
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Jest](https://img.shields.io/badge/Jest-C21325?style=flat-square&logo=jest&logoColor=white)
 
-## Features
+**Test-driven development assessment — demonstrating clean architecture patterns in TypeScript.**
 
-- **React Frontend**: A responsive user interface built with React, featuring Bootstrap for styling.
-- **Calculator Service**: A backend service class (`CalculatorService`) that processes input strings and computes the sum of numbers.
-- **Custom Delimiters**: Supports user-defined delimiters in addition to default ones like commas and newlines.
-- **Error Handling**: Detects negative numbers in the input and displays an error message.
-
-## Installation
-
-To set up the project locally, follow these steps:
-
-1. **Clone the repository**:
-
-   ```bash
-   git clone https://github.com/himanshu31shr/calculator-app.git
-   ```
-
-2. **Navigate to the project directory**:
-
-   ```bash
-   cd calculator-app
-   ```
-
-3. **Install dependencies**:
-
-   ```bash
-   npm install
-   ```
-
-4. **Start the development server**:
-
-   ```bash
-   npm start
-   ```
-
-   The app should now be running at `http://localhost:3000`.
-
-## Usage
-
-### User Interface
-
-1. **Enter Input**: Users can input a sequence of numbers in the provided text area. The input can include commas, newlines, and custom delimiters.
-2. **Calculate Sum**: After entering the sequence, users can press the "Calculate" button to see the sum of the numbers displayed in the results section.
-3. **Custom Delimiters**: To include a custom delimiter, start the sequence with `//` followed by the delimiter character.
-
-## Running Tests
-
-The project includes unit tests to ensure the functionality of the `CalculatorService` and React components.
-
-To run the tests:
-
-```bash
-npm run test
-```
-
-## Deployment
-
-To deploy the app:
-
-1. **Build the app**:
-
-   ```bash
-   npm run build
-   ```
-
-2. **Deploy**: Deploy the contents of the `build` directory to your preferred hosting service.
-
-## Contact
-
-For questions or feedback, please contact [himanshu31shr@gmail.com](mailto:himanshu31shr@gmail.com).
+</div>
 
 ---
 
-This `README.md` provides a comprehensive guide to setting up, using, and understanding the entire project. It integrates the `CalculatorService` with the React frontend and offers clear instructions for both developers and end users.
+## 🎯 About
+
+A coding assessment completed using strict **Test-Driven Development (TDD)** methodology. Every feature was developed red → green → refactor, demonstrating:
+
+- ✅ **Outside-in TDD** approach
+- 🏗️ **Clean architecture** with clear separation of concerns
+- 📐 **SOLID principles** applied throughout
+- 🧪 **Comprehensive test coverage** with meaningful assertions
+- 📝 **Self-documenting code** through expressive naming
+
+## 🛠️ Tech Stack
+
+- **TypeScript** — Type-safe development
+- **React** — Component-based UI
+- **Jest** — Testing framework
+- **Clean Architecture** — Domain-driven structure
+
+## 🚀 Getting Started
+
+```bash
+git clone https://github.com/himanshu31shr/assessment-tdd.git
+cd assessment-tdd
+npm install
+npm test        # Run tests
+npm start       # Start dev server
+```
+
+## 📄 License
+
+MIT © [Himanshu Shrivastava](https://github.com/himanshu31shr)
